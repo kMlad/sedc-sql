@@ -1,0 +1,64 @@
+CREATE DATABASE Faculty;
+USE DATABASE Faculty;
+
+CREATE TABLE Student
+(
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    EnrolledDate DATE NOT NULL, 
+    Gender NVARCHAR(20),
+    NationalIDNumber INT NOT NULL,
+    StudentCardNumber INT NOT NULL
+);
+
+CREATE TABLE Teacher
+(
+    ID SMALLINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    FirstName NVARCHAR(50) NOT NULL,
+    LastName NVARCHAR(50) NOT NULL,
+    DateOfBirth DATE NOT NULL,
+    AcademicRank INT NOT NULL,
+    HireDate DATE NOT NULL
+);
+
+CREATE TABLE Grade
+(
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    StudentID INT NOT NULL,
+    CourseID SMALLINT NOT NULL,
+    TeacherID SMALLINT NOT NULL,
+    Grade TINYINT NOT NULL,
+    Comment NVARCHAR(100),
+    CreatedDate DATETIME NOT NULL
+);
+
+CREATE TABLE Course
+(
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name NVARCHAR(50) NOT NULL,
+    Credit TINYINT NOT NULL,
+    AcademicYear SMALLINT NOT NULL,
+    Semester TINYINT NOT NULL,
+);
+
+CREATE TABLE AchievmentType
+(
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    Name NVARCHAR(50) NOT NULL,
+    Description NVARCHAR(100) NOT NULL,
+    ParticipationRate DECIMAL(5, 2) NOT NULL
+);
+
+
+CREATE TABLE GradeDetails
+(
+    ID INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    GradeID INT NOT NULL,
+    AchievmentTypeID INT NOT NULL,
+    AchievmentPoints SMALLINT NOT NULL,
+    AchievmentMaxPoints SMALLINT NOT NULL,
+    AchievmentDate DATE NOT NULL
+);
+
